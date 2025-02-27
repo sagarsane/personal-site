@@ -14,8 +14,8 @@ export default function Home() {
                   Hi, I'm Sagar Sane
                 </span>
                 <span className="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
-                  <span className="block text-gray-900 dark:text-white">
-                    Software Engineer
+                  <span className="block text-gray-700 dark:text-white">
+                    AEM Technical Architect
                   </span>
                   <span className="block text-indigo-600 dark:text-indigo-400">
                     & Tech Enthusiast
@@ -26,7 +26,8 @@ export default function Home() {
                 Passionate about building innovative solutions and sharing
                 insights on the latest technologies. I specialize in full-stack
                 development, cloud architecture, and creating scalable
-                applications.
+                applications. I have over a decade of experience in Adobe
+                Experience Manager implementations.
               </p>
               <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left">
                 <div className="grid grid-cols-2 gap-4">
@@ -93,20 +94,19 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Latest Blog Posts */}
+            {/* Get in Touch */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                Latest Blog Posts
+                Get in Touch
               </h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                Read my thoughts on technology, development, and industry
-                trends.
+                Interested in working together? Let's discuss your next project.
               </p>
               <Link
-                href="/blog"
+                href="/contact"
                 className="mt-4 inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400"
               >
-                Read Blog
+                Contact Me
                 <svg
                   className="ml-2 w-4 h-4"
                   fill="currentColor"
@@ -121,19 +121,20 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Get in Touch */}
+            {/* Latest Blog Posts */}
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow-sm p-6">
               <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                Get in Touch
+                Latest Blog Posts
               </h3>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                Interested in working together? Let's discuss your next project.
+                Read my thoughts on technology, development, and industry
+                trends.
               </p>
               <Link
-                href="/contact"
+                href="/blog"
                 className="mt-4 inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400"
               >
-                Contact Me
+                Read Blog
                 <svg
                   className="ml-2 w-4 h-4"
                   fill="currentColor"

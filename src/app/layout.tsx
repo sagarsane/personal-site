@@ -7,9 +7,25 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Sagar Sane - Software Engineer & Tech Enthusiast",
-  description:
-    "Personal website and blog of Sagar Sane - Software Engineer, tech enthusiast, and problem solver.",
+  title: "Sagar Sane",
+  description: "Personal website and portfolio of Sagar Sane",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+  },
 };
 
 export default function RootLayout({
