@@ -9,6 +9,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { deskTool } from 'sanity/desk'
 import { codeInput } from '@sanity/code-input'
+import { type DocumentActionComponent } from 'sanity'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion } from './src/sanity/env'
@@ -33,16 +34,15 @@ export default defineConfig({
     types: schema.types,
   },
   document: {
-    // New document actions
-    actions: (prev, { schemaType }) => {
-      // Add a "Publish and Revalidate" action
-      const publishAndRevalidate = {
-        label: 'Publish and Revalidate',
-        onHandle: async (props) => {
-          // First, publish the document
-          const published = await props.publish();
-          
-          if (published) {
+    actions: (prev) => {
+      const publishAndRevalidate: DocumentActionComponent = (props) => {
+        return {
+          label: 'Publish and Revalidate',
+          onHandle: async () => {
+            // Get the document to revalidate
+            const doc = props.draft || props.published;
+            if (!doc) return;
+            
             // Then trigger the revalidation webhook
             const webhookUrl = process.env.NEXT_PUBLIC_VERCEL_URL 
               ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/revalidate`
@@ -55,25 +55,22 @@ export default defineConfig({
                   'Content-Type': 'application/json',
                   'x-webhook-secret': process.env.SANITY_REVALIDATE_SECRET || '',
                 },
-                body: JSON.stringify(published),
+                body: JSON.stringify(doc),
               });
               
               if (!response.ok) {
                 throw new Error('Revalidation failed');
               }
-              
-              // Show success message
-              props.onComplete();
             } catch (err) {
               console.error('Revalidation error:', err);
-              // Show error message
-              props.onError(err);
+              throw new Error('Failed to revalidate');
             }
-          }
-        },
-      };
+          },
+          tone: 'positive'
+        }
+      }
       
-      return [...prev, publishAndRevalidate];
+      return [...prev, publishAndRevalidate]
     },
   },
 })
