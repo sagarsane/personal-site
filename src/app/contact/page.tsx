@@ -28,7 +28,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "mailto:sagar@sagarsane.com",
+    url: "mailto:sagar2217@gmail.com",
     icon: MdEmail,
   },
 ];
